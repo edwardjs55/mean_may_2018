@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ninja class constructor II </h1>
+    <h2>Punch & kick</h2>
+    <script>
+        function Ninja(name) {
+            this.name = name;
+            this.health = 100;
+            this.speed = 3;
+            this.strength = 3;
+
+            this.sayName = function(){
+                console.log("my ninja name is :" + this.name);
+            }
+            this.showStats = function(){
+                console.log(' Ninja Stats - name: '+ this.name +' speed: '+ this.speed +' health: '+ this.health);
+            }
+            this.drinkSake = function(){
+                this.health += 10;
+            }
+            this.punch = function(obj){
+                if(obj instanceof Ninja){
+                obj.health -=5;
+                console.log(obj.name + ' was Puched by '+ this.name + ' and lost 5 health points')
+                }
+                else{ console.log("ERROR: Punch function parameter must be a Ninja object/type ") }
+            }
+            this.kick = function(obj){
+                if(obj instanceof Ninja){
+                kpow = 15 * this.strength;
+                obj.health -= kpow;
+                console.log(obj.name + ' was KICKED by '+ this.name + ' and lost '+ kpow +' health points')
+                str = (' In this case, '+ obj.name + ' lost '+kpow+ ' health points because '+ this.name + ' has '+  this.strength + ' point of strength')
+                console.log(str)
+                }
+                else{ console.log("ERROR: Kick function parameter must be a Ninja object/type ") }
+            }
+        }
+
+        
+        var blueNinja = new Ninja("Billy Jack");
+        var redNinja = new Ninja("Chuck Norris");
+        redNinja.punch(blueNinja);
+
+        blueNinja.kick(redNinja);
+        var red = 'me';
+        blueNinja.kick(red);
+
+       
+    
+    </script>
+    
+</body>
+</html>
